@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>F1 Tracker - Championship Hub</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#DC0000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="F1 Tracker">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="F1 Tracker">
+    <meta name="description" content="Complete Formula 1 championship tracker with live standings, race calendar, and breaking news">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiRjEgVHJhY2tlciAtIENoYW1waW9uc2hpcCBIdWIiLCJzaG9ydF9uYW1lIjoiRjEgVHJhY2tlciIsImRlc2NyaXB0aW9uIjoiQ29tcGxldGUgRm9ybXVsYSAxIGNoYW1waW9uc2hpcCB0cmFja2VyIHdpdGggbGl2ZSBzdGFuZGluZ3MsIHJhY2UgY2FsZW5kYXIsIGFuZCBicmVha2luZyBuZXdzIiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwidGhlbWVfY29sb3IiOiIjREMwMDAwIiwiYmFja2dyb3VuZF9jb2xvciI6IiNmZmZmZmYiLCJvcmllbnRhdGlvbiI6InBvcnRyYWl0Iiwic2NvcGUiOiIvIiwiY2F0ZWdvcmllcyI6WyJzcG9ydHMiLCJuZXdzIiwiZW50ZXJ0YWlubWVudCJdLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTVRreUlpQm9aV2xuYUhROUlqRTVNaUlnZG1sbGQwSnZlRDBpTUNBd0lERTVNaUF4T1RJaVBpQThaR1ZtY3o0Z1BHeGJibVZ2Y2kzVmEyaElWVmxZWVRCUFpFWnJkMFYzV1VSV1VWRkVSWGR3UWtGUlNVSkJaMGxEUVZGMWNVaHpOaWN6WWpCaGJTQmpiMnh2Y2owaVl6QXdNREF3SWk4K1BEOXVQQ0E4Y0dGMGFDQmtQU0pOTlRNdU5qYzVOeUE0TGpBeE5ERldNek11TmpjNE5rZHVOVEF1TWpFMU5sVTJNaTQ0TkRveVNEVTVMamsyTVRSV09URTVMamN6TXpWVElERXdOelF1TXprekloZGVablZzWVhBeWJXeDFMakF6SURBdU0wRTBOeTQ0T1RBZ05EZHVPRFF5SURZMkxqRTJOeUEyTmk0ek16TkJOeUE5WmprZ01EVUhORGd5TFRrM0xqSTJOMGdwTmt0NE5ESk9PV0k0Tm1VelNXdDBZVEl6U0hBa2R5SkdaczkzYVdSMGFEMGlNVGt5SWloZmEyVjVabkpoYldWekx6NGdQQzl6ZG1jK0lpd2ljMmw2WlhNaU9pSmJORTkyVEc1ak5HTjFZamNrU0c1NVlXVkRZMHB3Y3paS2NHMUZlRlJWWkVKVlQzZDJWRVUxWVZsMU0yTnZWMVJXZDBKSmNXSldSbFpzYUhoaGNYZEViREpCWmxVNWNYcFhkVzVaY0V0NlozbDBUMVJXVVU5aGRqaE1NVU5nUWlabmRUZFFaMU16ZWs5VVZrVnpaWGxUVXpoRlVIVlZZVVFwWFNKOVhTd2lkSGx3WlNJNkluTjBZVzFrWVd4dmJtVWlMQ0p6Y21NaU9pSmtZWFJoT21sdFlXZGxMM04yWnl0NGJXdzdZbUZ6WlRZMExHbDBhMGhzWjA1cWVFMW5la1o2VVc5WUozZE1Pa1V5TXpBNGRXWkpOMEl0VWpCdWRWaFFUWHBLZEVocVFsSjFhbGRFZUVObE0zbFJVVEpGTjFOU2FXVnZVV2RSVFhsMWIyOUpTVWxwUW1aVGQwRXdaSGhLVGs5aVEwdGtZbUZrVERKc1NWZGFXR3RRUzJnd1pYUnZOMUUxZFdaUGJUUk1UbXhVYjJOTmJVdGdObFpwZURSRVF6VTRaSHBwYUZkelltaDNNelIyTVZkdU5VMTJUR3B4ZFdwWmVGWXhjM2hDWVZscVNTaGthM1Z5U1ZGTlpHRlJTVGxXYkdJdGNGbHdXU0lUTTNBWVZpSXZJaklsRlZKelZ6QmpVbFptWmxWbGNHNXRWU1V2TXo1dWVWZDBaamRXUVhOQlpFMXlabk10WjJaMU5qSjJkMVJMTWxnZ1pFWlZibGNEV1hCNE5VZFZkV2xYYkhkVlJqWlNjMlZVV1hsemNEVlhORE5EUTFOYlUxUmtiMlpNUXpsMWFraGFXVUZOV1V0UVVXNVJVRUZVVUV4a1pGSkNjRkJXTUZGclFXTlNVMkZLT0ZwWVl6TXhSRUZHUTNOWU4xWmhXRFJ1UzNGWU1qaDVhVmhGU0U5amVXOVVWMUJCUTBoRGJDTnZSMlZrWkRWUWNHWkVRMTloU0hSR2VqUkNjMFZDY0V3NE1VcFROMlpQYkc4NG4yUmZjbU50WVhRNU1TZHNkVTlqVVhSSE1qWnpWVGxGYkZRZFZoNmNXazBWV0VJNGEzcG5PVVZCVmprNU9VWnZjRGhpVkVJNE0yZzBiekJMZFhGTlZUWnplVmNnY0VsSlZnWnJjRGszTjJSdFUzRlJVRXRWU1RGU2RGZHRiM0ZrU1VsS2RXWjRXbWswUTBGbVJFRllUMnBPTmtzNGRVbEJRa1Z4VGtZSWZONWVSd01nME56TTBOWTh0TlRjelIzQm9XSFF2UjBkbVRHSllTVFZXUlU5Q1dDOXNlR1E5VzNkVU5WOGdNRGd4WTFaS2VGcFJlWGRJTm1STFREOU5URE5yWkdocE1uVkhNbkF6YmxjTVF6VjJiMVFTYzJaQklFMTJNbU4yU2pKUGRrSmFOQ3cxU1hWUFlXMVZaV2ROZEdaMVVYVnBWWGRFTXlvdldrNWlZMlZsYjNCYVRuTUtVR2gzTVdWc2FDdE9lRXBaYUZkMWNEVm9XWG95ZGpKaU9XSTROQzlNZEdOUWNFWkVhblJsVmxSVlZXNTNabUZxTmpCU1UxZDJUM0ZDVkdGNU1UOGVXaXcvUGdsRE0yZGVLMVpRU1VGbmNUVklWMDlFU1dGUFpOWmVWV2RsYjFaS2RVWnZWbXQyYkVZNVJIcHRSVVl5UjJ4VE5XY2diWFJDVDJSWFRGbHFiSEJhWW1OSmJrbGtWRGRYZFNkeGRHWjJUbTVOTWtZeGN6WkVSV0l3T1dKMFNJdExWMWwyU1dJME5XUnBObFl6WTFGS1ZrUjZhVlJsV0ROQlMzQnBZblZqUWtaQlVpWk9ZV0Z4Y0VaRWNtOXVkR2hXZDJGRmEwSnZOWEExV1djN1JETkJlbk52SWpabGJWUWdNME5JYjFwM2MxbFlRbHg1TXpKRlVEMXpXWGRIYTJwU0tDa0hTSE4zTkZSdVdYUmpjMjV2ZVV3UVZGVnRPQW85SWc9PSIsInNpemVzIjoiMTkyeDE5MiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn0seyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlOVEV5SWlCb1pXbG5hSFE5SWpVeE1pSWdkbWxsZDBKdmVEMGlNQ0F3SURVeE1pQTFNVElpUGlBOFpHVm1jejRnUEV4Y2JtVnZjaTFWYTJoSVZWbFlZVEJQWkVaclowVjNXVVJXVVZGRVJYZHdRa0ZSU1VKQlowbERRVkYxY1VoelRtZHpXekV4TUJCb2MxOEpaQ0ExUGlBOGQybG5kR2c5SWpReU1TY2dOR0l3UlJnPVZuTnhkM05LU2kwd1RIUkpRVEpDWVNkdmNHOU9PRWhwVXc1eWNsbFBjRmxxVERGMGRsbFNjSGh6VkZZM2VtRm1NalYyY0VNeU1qRkNPbWM5UFNJdlBqNGdQSE5vWVdSdmR5QjRPZDd5TUJBVGRYZEZibk52VVZRZ05qNWthMU5mZVV3b21ROGtXREpWSnlaQmNXVnJkbWRYV1UxY04zVnJXVTVpWURGZlMzUkZPRFpCUWlBQWFUaE1UR05FZGtGelQzVnlPVXB6WkZJNFFtVmpOVmN6U3k1QmVtTTJhWGMwTlVVekNXZFNjMnBzY0hGV05ucXdTa0ZhTld4R1prOXNaVk5LT1hCc1QwOCsxTVFMVEYrT1V3a2lOOEFadm5Ebm9DclJzTVBkVXl5NGh0b0k4MjJSYkxadW5FTTJmbGJqSW1ueTZoZGxNMnFTeE8zSDhRNnV3TGJzNEg0QlJhRDQ3eEcwdjNHSXg1UVRCTFdRaE5OYkJHdVFPWGFNdkMwR2FLYVdqVmlLeFV6MEllck1ySnp6Mk1zNXZCM05jeDNBOSs4dXg3QlNuSTZhVEtzTlNOTHFYSUhKQUtyWnJzcm5hQk5xNjMzNkFFYncrUkhBUk9vZ3BTVTl6cjdycnU5NDdHNHdaejRlNXBxUHNNeWVvN3R6K0VCQU15UGdMZzdIOUJzVTlXODc4QUNrRk1HQzVweXdhUThOaE5SNFVHOGhQZ2EzdVRnd3A5YVJQZkNJQUFvQ3NBNGJMdz09IiwiZmlsbHMiOlsia2FjKzUwIiwiMDA3OWNhKGVlZmVmOSdPQXFkWWRFZCVXaUM5TmQ3NkVPZEFHclJxY3EzRXE2ZU0rY0ZvYTN5U1JGYVNXMUhLZFZQODhWbWRvOFJOeTVQRVU1Q2JZVCsqcDJlSDVPMlBuVFNJSVNHY3VwTnlGUGFBek1kMkVCVVFiRUpTYS9VSWFsLzJCc1NzZVRXN0xyUzJlcHlSZTluREM2QVljK3E2S2FON3JKdE5wRW9JblBJazlwYTUrYXljdVQzQ0dzYTA2cUNoZWs4SUhXYjEyRWUzb2JEbFhYN0VOblNYVGpRZStOYUdMWnZhdzRhXC9DYnE5YThqSnM5Vkd0WU81blpLVzFhaTBDWUt5eCtVbllYOEI0WnlCVGdOU0hXYzQ4ZmJiZlJ4ZUhIS0tMZ3Q1NStHc3NXSVJMeTJDVDVNY0RqdDM1dkZsZ1E9PSIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dLCJzaG9ydGN1dHMiOlt7Im5hbWUiOiJTdGFuZGluZ3MiLCJzaG9ydF9uYW1lIjoiU3RhbmRpbmdzIiwidXJsIjoiLz9wYWdlPXN0YW5kaW5ncyIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlNalJjUXlBZmNTQjVabVVpUGlBO00zaHUiLCJzaXplcyI6IjI0eDI0In1dfSx7Im5hbWUiOiJDYWxlbmRhciIsInNob3J0X25hbWUiOiJDYWxlbmRhciIsInVybCI6Ii8/cGFnZT1jYWxlbmRhciIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJYU3QzYVdSWVRTaHNRa0Y4YW4xIiwic2l6ZXMiOiIyNHgyNCJ9XX0seyJuYW1lIjoiTmV3cyIsInNob3J0X25hbWUiOiJOZXdzIiwidXJsIjoiLz9wYWdlPW5ld3MiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQaE4yWnlCM2FXUjBhRDBpTWpSaWNTY2lQaUE4TDNOMlp5ND0iLCJzaXplcyI6IjI0eDI0In1dfV19">
+    
+    <!-- Icons for different devices -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiPiA8ZGVmcz4gPExpbmVhckdyYWRpZW50IGlkPSJncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4gPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2RjMjYyNjsiLz4gPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOTkxYjFiOyIvPiA8L0xpbmVhckdyYWRpZW50PiA8L2RlZnM+IDxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiBmaWxsPSJ1cmwoI2dyYWQpIiByeD0iMjQiLz4gPHBhdGggZD0iTTUzLjY3OTcgOC4wMTQxVjMzLjY3ODZHbjUwLjIxNTZVNjIuODQ4MkgyOS45NjE0VjkxOS43MzM1UyAxMDc0LjM5MyEiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMyIvPiA8dGV4dCB4PSI5NiIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RjE8L3RleHQ+IDwvc3ZnPg==">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiPiA8ZGVmcz4gPExpbmVhckdyYWRpZW50IGlkPSJncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4gPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6I2RjMjYyNjsiLz4gPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojOTkxYjFiOyIvPiA8L0xpbmVhckdyYWRpZW50PiA8L2RlZnM+IDxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiBmaWxsPSJ1cmwoI2dyYWQpIiByeD0iMjQiLz4gPHBhdGggZD0iTTUzLjY3OTcgOC4wMTQxVjMzLjY3ODZHbjUwLjIxNTZVNjIuODQ4MkgyOS45NjE0VjkxOS43MzM1UyAxMDc0LjM5MyEiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMyIvPiA8dGV4dCB4PSI5NiIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IndoaXRlIiBmb250LXdlaWdodD0iYm9sZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RjE8L3RleHQ+IDwvc3ZnPg==">
+    <link rel="mask-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiPjx0ZXh0IHg9Ijk2IiB5PSIxMTAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI0OCIgZmlsbD0iYmxhY2siIGZvbnQtd2VpZ2h0PSJib2xkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5GMTwvdGV4dD48L3N2Zz4=" color="#DC0000">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- PWA Install Banner -->
+    <div id="installBanner" class="install-banner hidden">
+        <div class="install-content">
+            <div class="install-icon">🏁</div>
+            <div class="install-text">
+                <h4>Install F1 Tracker</h4>
+                <p>Get faster access and offline support</p>
+            </div>
+            <div class="install-actions">
+                <button id="installBtn" class="btn btn--primary btn--sm">Install</button>
+                <button id="dismissBtn" class="btn btn--outline btn--sm">Later</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pull to Refresh Indicator -->
+    <div id="pullToRefresh" class="pull-refresh hidden">
+        <div class="refresh-spinner">🔄</div>
+        <p>Pull to refresh</p>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app" class="app">
+        <!-- Page: Dashboard/Home -->
+        <div id="home" class="page active">
+            <header class="page-header">
+                <h1>F1 Tracker</h1>
+                <p class="current-date" id="currentDate">Thursday, August 21, 2025</p>
+            </header>
+            
+            <!-- Personalized Content for Favorite Team -->
+            <div id="favoriteTeamCard" class="favorite-team-card hidden"></div>
+            
+            <!-- Championship Leader Card -->
+            <div class="championship-leader" id="championshipLeader">
+                <div class="leader-badge">Championship Leader</div>
+                <div class="leader-info">
+                    <div class="leader-name">Oscar Piastri</div>
+                    <div class="leader-team">McLaren</div>
+                    <div class="leader-points">284 points</div>
+                </div>
+                <div class="leader-flag">🇦🇺</div>
+            </div>
+
+            <!-- Next Race Countdown -->
+            <div class="next-race-card">
+                <h3>Next Race</h3>
+                <div class="race-name" id="nextRaceName">Dutch Grand Prix</div>
+                <div class="race-location" id="nextRaceLocation">Zandvoort, Netherlands</div>
+                <div class="race-date" id="nextRaceDate">August 29-31, 2025</div>
+                <div class="countdown-container">
+                    <div class="countdown live-countdown" id="liveCountdown">
+                        <div class="countdown-unit">
+                            <span class="countdown-number" id="days">10</span>
+                            <span class="countdown-label">days</span>
+                        </div>
+                        <div class="countdown-unit">
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-label">hours</span>
+                        </div>
+                        <div class="countdown-unit">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-label">mins</span>
+                        </div>
+                        <div class="countdown-unit">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-label">secs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-widget">
+                    <span class="weather-icon">🌤️</span>
+                    <span class="weather-text" id="raceWeather">Partly Cloudy, 22°C</span>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <button class="action-btn" data-action="standings">
+                    <span class="action-icon">🏆</span>
+                    <span class="action-label">Live Standings</span>
+                </button>
+                <button class="action-btn" data-action="calendar">
+                    <span class="action-icon">📅</span>
+                    <span class="action-label">Race Calendar</span>
+                </button>
+                <button class="action-btn" data-action="news">
+                    <span class="action-icon">📰</span>
+                    <span class="action-label">Latest News</span>
+                </button>
+            </div>
+
+            <!-- Season Stats -->
+            <div class="stats-grid">
+                <div class="stat-card" id="completedRaces">
+                    <div class="stat-number">14</div>
+                    <div class="stat-label">Races Completed</div>
+                </div>
+                <div class="stat-card" id="remainingRaces">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Races Remaining</div>
+                </div>
+                <div class="stat-card" id="totalRaces">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Total Races</div>
+                </div>
+            </div>
+
+            <!-- Championship Prediction Calculator -->
+            <div class="section">
+                <h3>Championship Calculator</h3>
+                <div class="prediction-card">
+                    <div class="prediction-form">
+                        <select id="driver1" class="form-control">
+                            <option value="">Select Driver 1</option>
+                        </select>
+                        <span class="vs-text">VS</span>
+                        <select id="driver2" class="form-control">
+                            <option value="">Select Driver 2</option>
+                        </select>
+                    </div>
+                    <div class="prediction-result" id="predictionResult"></div>
+                </div>
+            </div>
+
+            <!-- Latest News Headlines -->
+            <div class="section">
+                <h3>Latest News</h3>
+                <div class="news-list" id="homeNewsList"></div>
+            </div>
+        </div>
+
+        <!-- Page: Championship Standings -->
+        <div id="standings" class="page">
+            <header class="page-header">
+                <h1>Championship Standings</h1>
+                <div class="standings-controls">
+                    <div class="toggle-buttons">
+                        <button class="toggle-btn active" data-type="drivers">Drivers</button>
+                        <button class="toggle-btn" data-type="constructors">Constructors</button>
+                    </div>
+                    <button class="share-btn" id="shareStandings">
+                        <span>📤</span>
+                    </button>
+                </div>
+            </header>
+            
+            <div class="swipe-container" id="standingsSwipeContainer">
+                <div id="driversStandings" class="standings-container active">
+                    <div class="standings-list" id="driversList"></div>
+                </div>
+                
+                <div id="constructorsStandings" class="standings-container">
+                    <div class="standings-list" id="constructorsList"></div>
+                </div>
+            </div>
+
+            <!-- Driver Comparison Tool -->
+            <div class="section">
+                <h3>Driver Comparison</h3>
+                <div class="comparison-tool">
+                    <div class="comparison-selects">
+                        <select id="compareDriver1" class="form-control">
+                            <option value="">Select Driver</option>
+                        </select>
+                        <select id="compareDriver2" class="form-control">
+                            <option value="">Select Driver</option>
+                        </select>
+                    </div>
+                    <div class="comparison-result" id="comparisonResult"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page: Race Calendar -->
+        <div id="calendar" class="page">
+            <header class="page-header">
+                <h1>2025 Race Calendar</h1>
+                <div class="season-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 58.3%"></div>
+                    </div>
+                    <p>14 of 24 races completed</p>
+                </div>
+            </header>
+            
+            <!-- Calendar Filters -->
+            <div class="calendar-filters">
+                <button class="filter-btn active" data-filter="all">All Races</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                <button class="filter-btn" data-filter="sprint">Sprint Weekends</button>
+            </div>
+            
+            <div class="calendar-list" id="calendarList"></div>
+        </div>
+
+        <!-- Page: Latest News -->
+        <div id="news" class="page">
+            <header class="page-header">
+                <h1>Latest News</h1>
+                <div class="news-controls">
+                    <div class="search-container">
+                        <input type="text" id="newsSearch" class="form-control" placeholder="Search news...">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- News Filters -->
+            <div class="news-filters">
+                <button class="filter-btn active" data-category="all">All News</button>
+                <button class="filter-btn" data-category="championship">Championship</button>
+                <button class="filter-btn" data-category="race">Race Results</button>
+                <button class="filter-btn" data-category="team">Team News</button>
+            </div>
+            
+            <div class="latest-news-list" id="latestNewsList"></div>
+            
+            <!-- News Sources Section -->
+            <div class="section" style="margin-top: var(--space-32);">
+                <h3>News Sources</h3>
+                <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin-bottom: var(--space-16);">Your trusted F1 news outlets</p>
+                <div class="news-sources-grid" id="newsSourcesGrid"></div>
+            </div>
+        </div>
+
+        <!-- Page: Settings -->
+        <div id="settings" class="page">
+            <header class="page-header">
+                <h1>Settings</h1>
+                <p>Customize your F1 experience</p>
+            </header>
+            
+            <div class="settings-list">
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Dark Mode</h4>
+                        <p>Switch between light and dark themes</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="darkModeToggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Favorite Team</h4>
+                        <p>Select your favorite F1 team</p>
+                    </div>
+                    <select class="form-control" id="favoriteTeam">
+                        <option value="">Choose team...</option>
+                        <option value="mclaren">McLaren</option>
+                        <option value="ferrari">Ferrari</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="redbull">Red Bull</option>
+                        <option value="williams">Williams</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Favorite Driver</h4>
+                        <p>Select your favorite F1 driver</p>
+                    </div>
+                    <select class="form-control" id="favoriteDriver">
+                        <option value="">Choose driver...</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Notifications</h4>
+                        <p>Get race and news updates</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="notificationsToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Haptic Feedback</h4>
+                        <p>Vibration feedback for interactions</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="hapticToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Language</h4>
+                        <p>Choose your preferred language</p>
+                    </div>
+                    <select class="form-control" id="language">
+                        <option value="en">English</option>
+                        <option value="es">Español</option>
+                        <option value="fr">Français</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h4>Data Sync</h4>
+                        <p>Sync when connection is restored</p>
+                    </div>
+                    <button id="syncData" class="btn btn--outline btn--sm">Sync Now</button>
+                </div>
+                
+                <div class="about-section">
+                    <h4>About F1 Tracker</h4>
+                    <p>Version 2.0.0 PWA</p>
+                    <p>Your ultimate companion for Formula 1 news, standings, and race information.</p>
+                    <p class="offline-status">
+                        Status: <span id="connectionStatus" class="status status--success">Online</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="home">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </button>
+        <button class="nav-item" data-page="standings">
+            <span class="nav-icon">🏆</span>
+            <span class="nav-label">Standings</span>
+        </button>
+        <button class="nav-item" data-page="calendar">
+            <span class="nav-icon">📅</span>
+            <span class="nav-label">Calendar</span>
+        </button>
+        <button class="nav-item" data-page="news">
+            <span class="nav-icon">📰</span>
+            <span class="nav-label">News</span>
+        </button>
+        <button class="nav-item" data-page="settings">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-label">Settings</span>
+        </button>
+    </nav>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Race Detail Modal -->
+    <div id="raceModal" class="modal hidden">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalRaceTitle">Race Details</h3>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Race details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
